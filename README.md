@@ -7,17 +7,17 @@ Additionally, I'm hoping to discover a relationship between prior school perform
 
 My analysis will progress as followed:
 
-1. Dataset Scrub
+##Dataset Scrub
+*Ensure student data is HIPAA compliant 
+*Check for inconsistencies with student IDs 
+*Eliminate observations of groups with sample size <10
+*Rename columns for easier reading
 
-Ensure student data is HIPAA compliant | Check for inconsistencies with student IDs |Eliminate observations of groups with sample size <10
-Rename columns for easier reading
-
-2. Visualizations of Data
-Histograms to understand score proficiencies |Categorized Bar Graphs 
+##Visualizations of Data
+*Histograms to understand score proficiencies |Categorized Bar Graphs 
   
-3. Multivariate Regression
-
-Understand which categorical variables contribute to academic proficiency
+##Multivariate Regression
+*Understand which categorical variables contribute to academic proficiency
   
 
 
