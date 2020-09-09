@@ -41,7 +41,7 @@ cols<-c("SchoolYear", "Student_Grade_Level", "School","Region",
 hw[,cols] <- lapply(hw[,cols], as.factor) #Convert necessary columns to factors
 ```
 
-We are only interesed in students in grades 8-11, so we will remove grade 12 observations from the dataset. We can also remove Memphis students from our dataset, as their is only one observation. 
+We are only interesed in students in grades 8-11, so we will remove grade 12 observations from the dataset when testing yearly improvement. We can also remove Memphis students from our dataset, as their is only one observation. 
 
 Additionally, I want to remove any observations with missing data.
 ```
@@ -51,10 +51,11 @@ hw <- subset(hw, hw$Student_Ethnicity!="-----")
 hw <- subset(hw, Student_Grade_Level != "12")
 hw2016 <- subset(hw, hw$SchoolYear != '2016-2017') 
 hw2017 <- subset(hw, SchoolYear != '2017-2018') 
-
 ```
-ggplot(Improvements[which(Improvements$`Math Score 2016-2017`>0),],aes(x=`ELA Score 2016-2017`, y=`Math Score 2016-2017`)) +
-  geom_point()+
-  geom_smooth(method='lm') +
-  theme_minimal()
-  
+Doing an initial data visualization, Math asssessment scores are pretty much normally distributed, with an average of 48% 
+
+![](images/math_histograms.jpeg)  
+
+Additionally, when breaking out assessment scores by region, we see that The Bay Area averages the lowest scores both years, while the Central Valley averages significantly higher scores than the other regions both years.
+
+![](images/region_boxplot.jpeg) ![](images/SPED.jpeg)
