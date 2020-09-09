@@ -21,6 +21,7 @@ My analysis will progress as followed:
 * Understand which categorical variables contribute to academic proficiency
   
 ## Exploration
+Load required libraries
 ```
 library(readxl)
 library(ggplot2)
@@ -28,4 +29,32 @@ library(dplyr)
 library(dummies)
 library(data.frame)
 ```
+### Data Restructure
+First we convert all necessary columns to factor variables, so they can later be analyzed as categories
 
+```
+cols<-c("SchoolYear", "Student_Grade_Level", "School","Region", 
+        "AssessmentType", "AssessmentSubject", 
+        "AssessmentName", "Student_Ethnicity", 
+        "Student_is_FreeOrReducedLunch", "Language_Fluency",
+        "Student_is_SPED", "ProficiencyLevelScore") 
+hw[,cols] <- lapply(hw[,cols], as.factor) #Convert necessary columns to factors
+```
+
+We are only interesed in students in grades 8-11, so we will remove grade 12 observations from the dataset. We can also remove Memphis students from our dataset, as their is only one observation. 
+
+Additionally, I want to remove any observations with missing data.
+```
+hw <- subset(hw, hw$Region!="Memphis") #Remove Memphis, only one observation, not significant
+hw <- subset(hw, hw$Language_Fluency!="-----") 
+hw <- subset(hw, hw$Student_Ethnicity!="-----") 
+hw <- subset(hw, Student_Grade_Level != "12")
+hw2016 <- subset(hw, hw$SchoolYear != '2016-2017') 
+hw2017 <- subset(hw, SchoolYear != '2017-2018') 
+
+```
+ggplot(Improvements[which(Improvements$`Math Score 2016-2017`>0),],aes(x=`ELA Score 2016-2017`, y=`Math Score 2016-2017`)) +
+  geom_point()+
+  geom_smooth(method='lm') +
+  theme_minimal()
+  
