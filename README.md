@@ -14,11 +14,18 @@ My analysis will progress as followed:
 * Rename columns for easier reading
 
 ## Visualizations of Data
-* Histograms to understand score proficiencies |Categorized Bar Graphs 
+* Histograms to understand score proficiencies 
+* Categorized Bar Graphs 
   
 ## Multivariate Regression
 * Understand which categorical variables contribute to academic proficiency
   
-
-
+## Exploration
+```
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(dummies)
+library(data.frame)
+```
 
